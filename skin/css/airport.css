@@ -1,2 +1,28 @@
-.body {
-  margin: auto; }
+.tablo {
+  width: 100%;
+  border-collapse: collapse; }
+  .tablo td {
+    border: 1px solid silver;
+    padding: 10px; }
+
+.tablo_header {
+  position: sticky;
+  top: 0; }
+  .tablo_header th {
+    padding: 10px 0;
+    text-align: left; }
+
+/*
+	flight type icons
+*/
+.tablo_flight-type {
+  display: block;
+  background-image: url(../img/icon-pack.png);
+  width: 32px;
+  height: 32px; }
+
+.tablo_flight-type__arrival {
+  background-position: 0px 0px; }
+
+.tablo_flight-type__departure {
+  background-position: -131px 0px; }

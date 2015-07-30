@@ -1,15 +1,15 @@
 <!doctype html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<title>airport tablo</title>
+	<link rel="stylesheet" type="text/css" href="skin/css/airport.css">
 </head>
 <body>
-
-	<table>
-		<thead>
+	<table class="tablo">
+		<thead class="tablo_header">
 			<tr>
-				<th>Тип рейса</th>
-				<th># рейса</th>
+				<th>Рейс #</th>
 				<th>Перевозчик</th><!-- + logo -->
 				<th>Тип самолета</th>
 				<th>Пункт прилёта</th>
@@ -18,20 +18,69 @@
 				<th>Примечание</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+		<tbody class="tablo_body">
+			<tr class="tablo_data tablo_data__arrival">
+				<td class="tablo_flight">
+					<input class="tablo_flight-type tablo_flight-type__arrival"
+							type="checkbox">
+					SU 039
+				</td>
+				<td class="tablo_flight_company s7">S7</td>
+				<td class="tablo_flight_airplane-type">A320</td>
+				<td class="tablo_flight-target">Москва VKO</td>
+				<td class="tablo_flight-time">18:50</td>
+				<td class="tablo_flight-status">Вылетел</td>
+				<td class="tablo_flight-note"> - </td>
+			</tr>
+			<tr class="tablo_data tablo_data__departure">
+				<td class="tablo_flight">
+					<input class="tablo_flight-type tablo_flight-type__arrival"
+							type="checkbox">
+					AF 4430
+				</td>
+				<td class="tablo_flight_company airfrance">AirFrance</td>
+				<td class="tablo_flight_airplane-type">B738</td>
+				<td>Санкт-Петербург LED</td>
+				<td>00:05</td>
+				<td>Регистрация</td>
+				<td> - </td>
 			</tr>
 		</tbody>
 	</table>
 
+	<!-- 
+		для вылетающих:
+			регистрация,
+			ожидание посадки,
+			посадка закончена,
+			вылетел;
+
+		для прилетающих:
+			по расписанию,
+			летит,
+			приземлился;
+
+		для всех:
+			задерживается до HH:MM,
+			отменён
+	 -->
+
+	<script type="text/x-handlebars-template" id="tablo_data">
+		<tr class="tablo_data tablo_data__{{flight.type}}">
+			<td class="tablo_flight">
+				<input class="tablo_flight-type tablo_flight-type__{{flight.type}}"
+						type="checkbox">
+				{{flight.id}}
+			</td>
+			<td class="tablo_flight_company s7">{{flight.company}}</td> // adjust company name via helper
+			<td class="tablo_flight_airplane-type">{{flight.airplane.type}}</td>
+			<td class="tablo_flight-target">{{flight.target.name}} {{flight.target.code}}</td>
+			<td class="tablo_flight-time">{{flight.time}}</td>
+			<td class="tablo_flight-status">{{flight.status}}</td>
+			<td class="tablo_flight-note">{{flight.note}}</td>
+		</tr>
+	</script>
+
+	<script src="skin/js/vendor/handlebars/handlebars.min.js"></script>
 </body>
 </html>

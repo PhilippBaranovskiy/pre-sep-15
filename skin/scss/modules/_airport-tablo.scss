@@ -1,0 +1,43 @@
+$mN: 'tablo'; // moduleName
+$headPadding: 10px 0;
+$bodyPadding: 10px;
+$border: 1px solid silver;
+
+.#{$mN} {
+	width: 100%;
+	border-collapse: collapse;
+
+	td {
+		border: $border;
+		padding: $bodyPadding;
+	}
+}
+.#{$mN}_header {
+
+	// position: fixed;
+	position: sticky;
+	top: 0;
+
+	th {
+		padding: $headPadding;
+		text-align: left;
+	}
+}
+.#{$mN}_body {}
+.#{$mN}_data {}
+
+/*
+	flight type icons
+*/
+.#{$mN}_flight-type {
+	display: block;
+	background-image: url(../img/icon-pack.png);
+	width: 32px;
+	height: 32px;
+}
+.#{$mN}_flight-type__arrival {
+	background-position: 0px 0px;
+}
+.#{$mN}_flight-type__departure {
+	background-position: -131px 0px;
+}
