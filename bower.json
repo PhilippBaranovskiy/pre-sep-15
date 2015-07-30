@@ -1,0 +1,6 @@
+{
+  "name": "pre-sep-15",
+  "dependencies": {
+    "handlebars": "~3.0.3"
+  }
+}
