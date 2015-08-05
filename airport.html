@@ -20,30 +20,7 @@
 		</thead>
 		<tbody class="tablo_body">
 			<tr class="tablo_data tablo_data__arrival">
-				<td class="tablo_flight">
-					<input class="tablo_flight-type tablo_flight-type__arrival"
-							type="checkbox">
-					SU 039
-				</td>
-				<td class="tablo_flight_company s7">S7</td>
-				<td class="tablo_flight_airplane-type">A320</td>
-				<td class="tablo_flight-target">Москва VKO</td>
-				<td class="tablo_flight-time">18:50</td>
-				<td class="tablo_flight-status">Вылетел</td>
-				<td class="tablo_flight-note"> - </td>
-			</tr>
-			<tr class="tablo_data tablo_data__departure">
-				<td class="tablo_flight">
-					<input class="tablo_flight-type tablo_flight-type__arrival"
-							type="checkbox">
-					AF 4430
-				</td>
-				<td class="tablo_flight_company airfrance">AirFrance</td>
-				<td class="tablo_flight_airplane-type">B738</td>
-				<td>Санкт-Петербург LED</td>
-				<td>00:05</td>
-				<td>Регистрация</td>
-				<td> - </td>
+				<td colspan="7">Загрузка…</td>
 			</tr>
 		</tbody>
 	</table>
@@ -65,22 +42,23 @@
 			отменён
 	 -->
 
-	<script type="text/x-handlebars-template" id="tablo_data">
-		<tr class="tablo_data tablo_data__{{flight.type}}">
-			<td class="tablo_flight">
-				<input class="tablo_flight-type tablo_flight-type__{{flight.type}}"
-						type="checkbox">
-				{{flight.id}}
-			</td>
-			<td class="tablo_flight_company s7">{{flight.company}}</td> // adjust company name via helper
-			<td class="tablo_flight_airplane-type">{{flight.airplane.type}}</td>
-			<td class="tablo_flight-target">{{flight.target.name}} {{flight.target.code}}</td>
-			<td class="tablo_flight-time">{{flight.time}}</td>
-			<td class="tablo_flight-status">{{flight.status}}</td>
-			<td class="tablo_flight-note">{{flight.note}}</td>
-		</tr>
+	<script type="text/x-handlebars-template" id="tablo-data-template">
+		{{#each flights}}
+			<tr class="tablo_data tablo_data__{{type}}">
+				<td class="tablo_flight">
+					<input class="tablo_flight-type tablo_flight-type__{{type}}" type="checkbox">
+					{{id}}
+				</td>
+				<td class="tablo_flight_company {{#lowerCase}}{{company}}{{/lowerCase}}">{{company}}</td>
+				<td class="tablo_flight_airplane-type">{{airplane}}</td>
+				<td class="tablo_flight-target">{{target.name}} {{target.code}}</td>
+				<td class="tablo_flight-time">{{time}}</td>
+				<td class="tablo_flight-status">{{status}}</td>
+				<td class="tablo_flight-note">{{note}}</td>
+			</tr>
+		{{/each}}
 	</script>
-
 	<script src="skin/js/vendor/handlebars/handlebars.min.js"></script>
+	<script src="skin/js/app.js"></script>
 </body>
 </html>
