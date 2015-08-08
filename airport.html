@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>airport tablo</title>
+	<link rel="stylesheet" type="text/css" href="skin/css/airport.css">
+</head>
+<body>
+	<table class="tablo">
+		<thead class="tablo_header">
+			<tr>
+				<th>Рейс #</th>
+				<th>Перевозчик</th><!-- + logo -->
+				<th>Тип самолета</th>
+				<th>Пункт прилёта</th>
+				<th>Время</th>
+				<th>Статус рейса</th>
+				<th>Примечание</th>
+			</tr>
+		</thead>
+		<tbody class="tablo_body">
+			<tr class="tablo_data tablo_data__arrival">
+				<td colspan="7">Загрузка…</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- 
+		для вылетающих:
+			регистрация,
+			ожидание посадки,
+			посадка закончена,
+			вылетел;
+
+		для прилетающих:
+			по расписанию,
+			летит,
+			приземлился;
+
+		для всех:
+			задерживается до HH:MM,
+			отменён
+	 -->
+
+	<script type="text/x-handlebars-template" id="tablo-data-template">
+		{{#each flights}}
+			<tr class="tablo_data tablo_data__{{type}}">
+				<td class="tablo_flight tablo_flight-type tablo_flight-type__{{type}}">
+					{{id}}
+				</td>
+				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}}">{{company}}</td>
+				<td class="tablo_flight_airplane-type">{{airplane}}</td>
+				<td class="tablo_flight-target">{{target.name}} {{target.code}}</td>
+				<td class="tablo_flight-time">{{time}}</td>
+				<td class="tablo_flight-status">{{status}}</td>
+				<td class="tablo_flight-note">{{note}}</td>
+			</tr>
+		{{/each}}
+	</script>
+	<script src="skin/js/vendor/handlebars/handlebars.min.js"></script>
+	<script src="skin/js/app.js"></script>
+</body>
+</html>
