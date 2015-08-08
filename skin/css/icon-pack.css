@@ -12,12 +12,12 @@ Icon classes can be used entirely standalone. They are named after their origina
 .icon-airplane_down {
   background-image: url(../img/icon-pack.png);
   background-position: 0px 0px;
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
 }
 .icon-airplane_up {
   background-image: url(../img/icon-pack.png);
-  background-position: -67px 0px;
-  width: 64px;
-  height: 64px;
+  background-position: -131px 0px;
+  width: 128px;
+  height: 128px;
 }

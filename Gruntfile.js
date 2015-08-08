@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 				src: ['skin/img/icons/_*.png'],
 				dest: 'skin/img/icon-pack.png',
 				destCss: 'skin/css/icon-pack.css',
-				algorithm: 'binary-tree',
+				algorithm: 'left-right',
 				padding: 3,
 				cssVarMap: function (sprite) {
 					sprite.name = sprite.name.replace(/^_/,'');

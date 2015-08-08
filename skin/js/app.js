@@ -1,7 +1,7 @@
 var APP = (function(app) {
 	app.init = function() {
-		Handlebars.registerHelper('lowerCase', function(options) {
-			return new Handlebars.SafeString( ('' + options.fn(this)).toLowerCase() );
+		Handlebars.registerHelper('toCodeFormat', function(options) {
+			return new Handlebars.SafeString( ('' + options.fn(this)).match(/\S/gi).join('').toLowerCase() );
 		});
 		this.airport.data.load();
 	};

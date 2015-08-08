@@ -45,11 +45,10 @@
 	<script type="text/x-handlebars-template" id="tablo-data-template">
 		{{#each flights}}
 			<tr class="tablo_data tablo_data__{{type}}">
-				<td class="tablo_flight">
-					<input class="tablo_flight-type tablo_flight-type__{{type}}" type="checkbox">
+				<td class="tablo_flight tablo_flight-type tablo_flight-type__{{type}}">
 					{{id}}
 				</td>
-				<td class="tablo_flight_company {{#lowerCase}}{{company}}{{/lowerCase}}">{{company}}</td>
+				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}}">{{company}}</td>
 				<td class="tablo_flight_airplane-type">{{airplane}}</td>
 				<td class="tablo_flight-target">{{target.name}} {{target.code}}</td>
 				<td class="tablo_flight-time">{{time}}</td>

@@ -2,10 +2,13 @@ $mN: 'tablo'; // moduleName
 $headPadding: 10px 0;
 $bodyPadding: 10px;
 $border: 1px solid silver;
+$hlColor: #ffffcc;
 
 .#{$mN} {
 	width: 100%;
 	border-collapse: collapse;
+	overflow: hidden;
+	// position: relative;
 
 	td {
 		border: $border;
@@ -21,23 +24,48 @@ $border: 1px solid silver;
 	th {
 		padding: $headPadding;
 		text-align: left;
+		background-color: white;
 	}
 }
 .#{$mN}_body {}
-.#{$mN}_data {}
+.#{$mN}_data {
+	&:hover {
+		background-color: $hlColor;
+	}
+	td {
+		position: relative;
+		&:after {
+			background-color: $hlColor;
+			
+			content: '';
+			z-index: -1;
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 5000px;
+			top: -2500px; left: 0;
+		}
+		&:hover:after {
+			display: block;
+		}
+	}
+}
 
 /*
 	flight type icons
 */
-.#{$mN}_flight-type {
-	display: block;
+.#{$mN}_flight-type:before {
+	content: '';
+	display: inline-block;
 	background-image: url(../img/icon-pack.png);
-	width: 32px;
-	height: 32px;
+	background-size: auto 100%;
+	width: 25px;
+	height: 25px;
+	margin: 0 15px 0 0;
 }
-.#{$mN}_flight-type__arrival {
+.#{$mN}_flight-type__arrival:before {
 	background-position: 0px 0px;
 }
-.#{$mN}_flight-type__departure {
-	background-position: -131px 0px;
+.#{$mN}_flight-type__departure:before {
+	background-position: -25px 0px;
 }
