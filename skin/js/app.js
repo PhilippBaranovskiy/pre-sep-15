@@ -35,5 +35,6 @@ var APP = (function(app) {
 			}
 		}
 	};
+	// setTimeout(app.init.bind(app), 900);
 	app.init();
 })(APP || {});

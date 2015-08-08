@@ -7,10 +7,17 @@
 </head>
 <body>
 	<table class="tablo">
+		<col width="0">
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
+		<col>
 		<thead class="tablo_header">
 			<tr>
-				<th>Рейс #</th>
-				<th>Перевозчик</th><!-- + logo -->
+				<th colspan="2">Рейс #</th>
+				<th>Перевозчик</th>
 				<th>Тип самолета</th>
 				<th>Пункт прилёта</th>
 				<th>Время</th>
@@ -45,15 +52,45 @@
 	<script type="text/x-handlebars-template" id="tablo-data-template">
 		{{#each flights}}
 			<tr class="tablo_data tablo_data__{{type}}">
-				<td class="tablo_flight tablo_flight-type tablo_flight-type__{{type}}">
-					{{id}}
+				<td class="tablo_flight">
+					<span class="tablo_flight_content tablo_flight-type tablo_flight-type__{{type}}"></span>
 				</td>
-				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}}">{{company}}</td>
-				<td class="tablo_flight_airplane-type">{{airplane}}</td>
-				<td class="tablo_flight-target">{{target.name}} {{target.code}}</td>
-				<td class="tablo_flight-time">{{time}}</td>
-				<td class="tablo_flight-status">{{status}}</td>
-				<td class="tablo_flight-note">{{note}}</td>
+				<td class="tablo_flight">
+					<span class="tablo_flight_content">
+						{{id}}
+					</span>
+				</td>
+				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}}">
+					<span class="tablo_flight_content">
+						{{company}}
+					</span>
+				</td>
+				<td class="tablo_flight_airplane-type">
+					<span class="tablo_flight_content">
+						{{airplane}}
+					</span>
+				</td>
+				<td class="tablo_flight-target">
+					<span class="tablo_flight_content">
+						{{target.name}} {{target.code}}
+					</span>
+				</td>
+				<td class="tablo_flight-time">
+					<span class="tablo_flight_content">
+						{{time}}
+					</span>
+				</td>
+				<td class="tablo_flight-status">
+					<span class="tablo_flight_content">
+						{{status}}
+					</span>
+				</td>
+				<td class="tablo_flight-note">
+					<span class="tablo_flight_content">
+						{{#if note}}{{note}}
+						{{else}}&nbsp;{{/if}}
+					</span>
+				</td>
 			</tr>
 		{{/each}}
 	</script>
