@@ -1,3 +1,12 @@
+@media (max-width: 40.625em) {
+  .tablo\:high-important {
+    display: none; } }
+@media (max-width: 46.875em) {
+  .tablo\:mid-important {
+    display: none; } }
+@media (max-width: 56.25em) {
+  .tablo\:low-important {
+    display: none; } }
 .tablo {
   width: 100%;
   border-collapse: collapse;
@@ -8,8 +17,7 @@
   text-align: left;
   border: 1px solid silver;
   z-index: 3;
-  position: relative;
-  line-height: 2.4; }
+  position: relative; }
   .tablo_header th:after {
     content: '';
     display: block;

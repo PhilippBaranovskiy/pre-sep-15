@@ -5,7 +5,24 @@ $border: 1px solid silver;
 $hlColor: #ffffcc;
 
 // ranges
-// $
+$r_important: (
+	high-important: 40.625em, // 650 px
+	mid-important: 46.875em, // 750 px
+	low-important: 56.25em   // 900 px
+);
+
+@each $state, $width in $r_important {
+	@media (max-width: #{$width}) {
+		.#{$mN}\:#{$state} {
+			display: none;
+		}
+	}
+}
+
+// filtering
+
+
+// module styles
 
 .#{$mN} {
 	width: 100%;
@@ -19,7 +36,6 @@ $hlColor: #ffffcc;
 		border: $border;
 		z-index: 3;
 		position: relative;
-		line-height: 2.4;
 
 		&:after {
 			content: '';

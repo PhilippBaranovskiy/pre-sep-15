@@ -6,31 +6,33 @@
 	<link rel="stylesheet" type="text/css" href="skin/css/airport.css">
 </head>
 <body>
-	<table class="tablo">
-		<col width="0">
-		<col>
-		<col>
-		<col>
-		<col>
-		<col>
-		<col>
-		<thead class="tablo_header">
-			<tr>
-				<th colspan="2">Рейс #</th>
-				<th>Перевозчик</th>
-				<th>Тип самолета</th>
-				<th>Пункт прилёта</th>
-				<th>Время</th>
-				<th>Статус рейса</th>
-				<th>Примечание</th>
-			</tr>
-		</thead>
-		<tbody class="tablo_body">
-			<tr class="tablo_data tablo_data__arrival">
-				<td colspan="7">Загрузка…</td>
-			</tr>
-		</tbody>
-	</table>
+	<div>
+		Показать только:
+		<input id="toggler_arrival" type="checkbox">
+		<label for="toggler_arrival">Прилёт</label>
+		<input id="toggler_departure" type="checkbox">
+		<label for="toggler_departure">Вылет</label>
+
+		<table class="tablo">
+			<thead class="tablo_header">
+				<tr>
+					<th class="tablo:high-important">Рейс#</th>
+					<th>&nbsp;</th>
+					<th>Назначение</th>
+					<th>Время</th>
+					<th>Статус рейса</th>
+					<th class="tablo:high-important">Перевозчик</th>
+					<th class="tablo:mid-important">Тип самолета</th>
+					<th class="tablo:low-important">Примечание</th>
+				</tr>
+			</thead>
+			<tbody class="tablo_body">
+				<tr class="tablo_data">
+					<td colspan="7">Загрузка…</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 	<!-- 
 		для вылетающих:
@@ -52,23 +54,13 @@
 	<script type="text/x-handlebars-template" id="tablo-data-template">
 		{{#each flights}}
 			<tr class="tablo_data tablo_data__{{type}}">
-				<td class="tablo_flight">
-					<span class="tablo_flight_content tablo_flight-type tablo_flight-type__{{type}}"></span>
-				</td>
-				<td class="tablo_flight">
+				<td class="tablo_flight tablo:high-important">
 					<span class="tablo_flight_content">
 						{{id}}
 					</span>
 				</td>
-				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}}">
-					<span class="tablo_flight_content">
-						{{company}}
-					</span>
-				</td>
-				<td class="tablo_flight_airplane-type">
-					<span class="tablo_flight_content">
-						{{airplane}}
-					</span>
+				<td class="tablo_flight">
+					<span class="tablo_flight_content tablo_flight-type tablo_flight-type__{{type}}"></span>
 				</td>
 				<td class="tablo_flight-target">
 					<span class="tablo_flight_content">
@@ -85,7 +77,17 @@
 						{{status}}
 					</span>
 				</td>
-				<td class="tablo_flight-note">
+				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}} tablo:high-important">
+					<span class="tablo_flight_content">
+						{{company}}
+					</span>
+				</td>
+				<td class="tablo_flight_airplane-type tablo:mid-important">
+					<span class="tablo_flight_content">
+						{{airplane}}
+					</span>
+				</td>
+				<td class="tablo_flight-note tablo:low-important">
 					<span class="tablo_flight_content">
 						{{#if note}}{{note}}
 						{{else}}&nbsp;{{/if}}
