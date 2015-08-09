@@ -90,14 +90,17 @@
 /*
 	flight type icons
 */
-.tablo_flight_type:before {
-  content: '';
-  display: inline-block;
-  background-image: url(../img/icon-pack.png);
-  background-size: auto 100%;
-  width: 25px;
-  height: 25px;
-  vertical-align: middle; }
+.tablo_flight_type {
+  padding: 0;
+  text-align: center; }
+  .tablo_flight_type:before {
+    content: '';
+    display: inline-block;
+    background-image: url(../img/icon-pack.png);
+    background-size: auto 100%;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle; }
 
 .tablo_flight__arrival:before {
   background-position: 0px 0px; }
