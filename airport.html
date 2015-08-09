@@ -6,14 +6,14 @@
 	<link rel="stylesheet" type="text/css" href="skin/css/airport.css">
 </head>
 <body>
-	<div>
+	<div class="tablo">
 		Показать только:
 		<input id="toggler_arrival" type="checkbox">
 		<label for="toggler_arrival">Прилёт</label>
 		<input id="toggler_departure" type="checkbox">
 		<label for="toggler_departure">Вылет</label>
 
-		<table class="tablo">
+		<table class="tablo_holder">
 			<thead class="tablo_header">
 				<tr>
 					<th class="tablo:high-important">Рейс#</th>
@@ -27,7 +27,7 @@
 				</tr>
 			</thead>
 			<tbody class="tablo_body">
-				<tr class="tablo_data">
+				<tr>
 					<td colspan="7">Загрузка…</td>
 				</tr>
 			</tbody>
@@ -60,19 +60,19 @@
 					</span>
 				</td>
 				<td class="tablo_flight">
-					<span class="tablo_flight_content tablo_flight-type tablo_flight-type__{{type}}"></span>
+					<span class="tablo_flight_content tablo_flight_type tablo_flight__{{type}}"></span>
 				</td>
-				<td class="tablo_flight tablo_flight-target">
+				<td class="tablo_flight tablo_flight__target">
 					<span class="tablo_flight_content">
 						<i class="tablo_flight_target-code">{{target.code}}</i>: {{target.name}}
 					</span>
 				</td>
-				<td class="tablo_flight tablo_flight-time">
+				<td class="tablo_flight tablo_flight__time">
 					<span class="tablo_flight_content">
 						{{time}}
 					</span>
 				</td>
-				<td class="tablo_flight tablo_flight-status">
+				<td class="tablo_flight tablo_flight__status">
 					<span class="tablo_flight_content">
 						{{status}}
 					</span>
@@ -87,7 +87,7 @@
 						{{airplane}}
 					</span>
 				</td>
-				<td class="tablo_flight tablo_flight-note tablo:low-important">
+				<td class="tablo_flight tablo_flight__note tablo:low-important">
 					<span class="tablo_flight_content">
 						{{#if note}}{{note}}
 						{{else}}&nbsp;{{/if}}

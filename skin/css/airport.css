@@ -1,16 +1,35 @@
 @media (max-width: 40.625em) {
   .tablo\:high-important {
-    display: none; } }
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
 @media (max-width: 46.875em) {
   .tablo\:mid-important {
-    display: none; } }
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
 @media (max-width: 56.25em) {
   .tablo\:low-important {
-    display: none; } }
-.tablo {
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
+#toggler_arrival:checked ~ .tablo_holder .tablo_data__departure {
+  visibility: collapse; }
+
+#toggler_departure:checked ~ .tablo_holder .tablo_data__arrival {
+  visibility: collapse; }
+
+#toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__departure, #toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__arrival {
+  visibility: visible; }
+
+.tablo_holder {
   width: 100%;
   border-collapse: collapse;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 10px auto auto; }
 
 .tablo_header th {
   padding: 0px 15px;
@@ -71,7 +90,7 @@
 /*
 	flight type icons
 */
-.tablo_flight-type:before {
+.tablo_flight_type:before {
   content: '';
   display: inline-block;
   background-image: url(../img/icon-pack.png);
@@ -80,8 +99,8 @@
   height: 25px;
   vertical-align: middle; }
 
-.tablo_flight-type__arrival:before {
+.tablo_flight__arrival:before {
   background-position: 0px 0px; }
 
-.tablo_flight-type__departure:before {
+.tablo_flight__departure:before {
   background-position: -25px 0px; }
