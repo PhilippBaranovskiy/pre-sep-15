@@ -62,32 +62,32 @@
 				<td class="tablo_flight">
 					<span class="tablo_flight_content tablo_flight-type tablo_flight-type__{{type}}"></span>
 				</td>
-				<td class="tablo_flight-target">
+				<td class="tablo_flight tablo_flight-target">
 					<span class="tablo_flight_content">
-						{{target.name}} {{target.code}}
+						<i class="tablo_flight_target-code">{{target.code}}</i>: {{target.name}}
 					</span>
 				</td>
-				<td class="tablo_flight-time">
+				<td class="tablo_flight tablo_flight-time">
 					<span class="tablo_flight_content">
 						{{time}}
 					</span>
 				</td>
-				<td class="tablo_flight-status">
+				<td class="tablo_flight tablo_flight-status">
 					<span class="tablo_flight_content">
 						{{status}}
 					</span>
 				</td>
-				<td class="tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}} tablo:high-important">
+				<td class="tablo_flight tablo_flight_company {{#toCodeFormat}}{{company}}{{/toCodeFormat}} tablo:high-important">
 					<span class="tablo_flight_content">
 						{{company}}
 					</span>
 				</td>
-				<td class="tablo_flight_airplane-type tablo:mid-important">
+				<td class="tablo_flight tablo_flight_airplane-type tablo:mid-important">
 					<span class="tablo_flight_content">
 						{{airplane}}
 					</span>
 				</td>
-				<td class="tablo_flight-note tablo:low-important">
+				<td class="tablo_flight tablo_flight-note tablo:low-important">
 					<span class="tablo_flight_content">
 						{{#if note}}{{note}}
 						{{else}}&nbsp;{{/if}}

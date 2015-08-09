@@ -56,41 +56,47 @@ $r_important: (
 	&:hover {
 		background-color: $hlColor;
 	}
-	td {
-		position: relative;
-		border: $border;
-		&:hover {
-			&:after {
-				background-color: $hlColor;
+}
+.#{$mN}_flight {
+	position: relative;
+	border: $border;
+	&:hover {
+		&:after {
+			background-color: $hlColor;
 
-				visibility: visible;
-				width: 100%;
-				height: 5000px;
-				top: -2500px; left: 0;
-				
-				z-index: 1;
-				display: block;
-				content: '';
-				position: absolute;
-			}
-		}
-		&:before {
-			content: '';
-			display: block;
-			border-bottom: $border;
-			position: absolute;
-			bottom: -1px;
-			z-index: 2;
-			left: 0;
+			visibility: visible;
 			width: 100%;
+			height: 5000px;
+			top: -2500px; left: 0;
+			
+			z-index: 1;
+			display: block;
+			content: '';
+			position: absolute;
 		}
 	}
+	&:before {
+		content: '';
+		display: block;
+		border-bottom: $border;
+		position: absolute;
+		bottom: -1px;
+		z-index: 2;
+		left: 0;
+		width: 100%;
+	}
 }
-.tablo_flight_content {
+.#{$mN}_flight_content {
 	display: block;
 	padding: $bodyPadding;
 	position: relative;
 	z-index: 2;
+}
+.#{$mN}_flight_target-code {
+	min-width: 2.8125rem;
+	font-style: normal;
+	font-weight: bolder;
+	display: inline-block;
 }
 
 /*

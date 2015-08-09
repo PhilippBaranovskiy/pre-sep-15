@@ -31,10 +31,11 @@
   background-color: #e6e6e6; }
 .tablo_data:hover {
   background-color: #ffffcd; }
-.tablo_data td {
+
+.tablo_flight {
   position: relative;
   border: 1px solid silver; }
-  .tablo_data td:hover:after {
+  .tablo_flight:hover:after {
     background-color: #ffffcd;
     visibility: visible;
     width: 100%;
@@ -45,7 +46,7 @@
     display: block;
     content: '';
     position: absolute; }
-  .tablo_data td:before {
+  .tablo_flight:before {
     content: '';
     display: block;
     border-bottom: 1px solid silver;
@@ -60,6 +61,12 @@
   padding: 0px 15px;
   position: relative;
   z-index: 2; }
+
+.tablo_flight_target-code {
+  min-width: 2.8125rem;
+  font-style: normal;
+  font-weight: bolder;
+  display: inline-block; }
 
 /*
 	flight type icons
