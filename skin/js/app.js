@@ -5,6 +5,19 @@ var APP = (function(app) {
 		});
 		this.airport.data.load();
 	};
+	app.isObject = function(value) {
+		if (typeof value === 'object' && value !== null &&
+			!(value instanceof Boolean) &&
+			!(value instanceof Date)    &&
+			!(value instanceof Number)  &&
+			!(value instanceof RegExp)  &&
+			!(value instanceof String)  &&
+			!Array.isArray(value))
+		{
+			return true;
+		}
+		return false;
+	};
 	app.airport = {
 		data: {
 			url: 'http://philipp.ninja/docs/pre-sep-15/airport.json',
@@ -30,11 +43,13 @@ var APP = (function(app) {
 				data = data || this.strg;
 				var template = Handlebars.compile(document.getElementById('tablo-data-template').innerHTML);
 				var out = template(data);
-				document.querySelector('.tablo_body').innerHTML = out;
+				document.querySelector('.tablo').innerHTML = out;
 				// console.log(out);
 			}
 		}
 	};
 	// setTimeout(app.init.bind(app), 900);
 	app.init();
+
+	return app;
 })(APP || {});
