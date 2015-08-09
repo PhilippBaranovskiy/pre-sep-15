@@ -30,12 +30,12 @@
 .tablo_data:nth-of-type(odd) {
   background-color: #e6e6e6; }
 .tablo_data:hover {
-  background-color: #ffffcc; }
+  background-color: #ffffcd; }
 .tablo_data td {
   position: relative;
   border: 1px solid silver; }
   .tablo_data td:hover:after {
-    background-color: #ffffcc;
+    background-color: #ffffcd;
     visibility: visible;
     width: 100%;
     height: 5000px;
