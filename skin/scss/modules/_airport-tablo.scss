@@ -37,6 +37,21 @@ $r_important: (
 	}
 }
 
+// popup by click
+
+.#{$mN}_popup-info {
+	display: none;
+	position: fixed;
+	
+	background-color: white;
+	border: 1px solid gray;
+	
+	top: 0;
+	bottom: 0;
+	right: 0;
+	
+	z-index: 4;
+}
 
 // module styles
 

@@ -1,7 +1,20 @@
 var APP = (function(app) {
 	app.init = function() {
-		Handlebars.registerHelper('toCodeFormat', function(options) {
-			return new Handlebars.SafeString( ('' + options.fn(this)).match(/\S/gi).join('').toLowerCase() );
+		Handlebars.registerHelper('toCodeFormat', function(context, options) {
+			var _this = '';
+			if (APP.isObject(context)) {
+				for (var prop in context) {
+					if( context.hasOwnProperty(prop) ) {
+						if (typeof context[prop] === 'string') {
+							_this += context[prop];
+						}
+					}
+				}
+			} else {
+				_this = context;
+			}
+			_this = _this.match(/\w/gi).join('').toLowerCase();
+			return new Handlebars.SafeString( _this );
 		});
 		this.airport.data.load();
 	};
