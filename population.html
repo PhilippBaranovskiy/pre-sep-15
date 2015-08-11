@@ -3,20 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>population app</title>
-	<style type="text/css">
-		.explanation {
-			font: 400 1.1em monospace;
-			max-width: 650px;
-		}
-		.explanation--header {
-			font-size: 1.3em;
-			font-weight: bolder;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="skin/css/population.css">
 </head>
 <body>
 	<p class="explanation">
-		Результат подсчета населения Африки будет в консоли /
+		Результат подсчета населения Африки будет в консоли.
+	</p>
+	<p class="explanation">
+		Поиск и подсчет по отдельной стране: <i title="численность населения" id="search-result"></i>
+		<button id="search-by-country" title="ввести страну или город" disabled>загрузка&#8230;</button>
 	</p>
 	<hr>
 	<h1 class="explanation explanation--header">
