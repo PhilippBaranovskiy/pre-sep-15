@@ -38,5 +38,5 @@ function getData(url, callback) {
         }
 
         callback(null, result);
-    }, Math.round(Math.random * 1000));
+    }, Math.round(Math.random() * 1000));
 }
