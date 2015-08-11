@@ -3,8 +3,32 @@
 <head>
 	<meta charset="utf-8">
 	<title>population app</title>
+	<style type="text/css">
+		.explanation {
+			font: 400 1.1em monospace;
+			max-width: 650px;
+		}
+		.explanation--header {
+			font-size: 1.3em;
+			font-weight: bolder;
+		}
+	</style>
 </head>
 <body>
+	<p class="explanation">
+		Результат подсчета населения Африки будет в консоли /
+	</p>
+	<hr>
+	<h1 class="explanation explanation--header">
+		Пояснение к ошибке наследования контекста:
+	</h1>
+	<p class="explanation">
+		При вызове callback функции внутри идет обращение к переменной <i>request</i>,<br>
+		которая на этот момент равна последнему из значений в <i>requests</i>, так как цикл уже отработал, и любой асинхроный вызов будет выполнен позже.<br>
+	</p>
+	<p class="explanation">
+		Даже если в setTimeout передать задержку в 0ms, то назначение конкретной переменной все равно потребуется, т.к. JavaScript язык однопоточный и для имитации "многопоточности" и асинхронности происходит просто переставление исполнения блока кода дальще в очереди потока.
+	</p>
 	<script type="text/javascript" src="skin/js/modules/population.api.js"></script>
 	<script type="text/javascript" src="skin/js/population.client.js"></script>
 </body>
