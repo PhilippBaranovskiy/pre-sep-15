@@ -37,6 +37,9 @@
 		{{#each flights}}
 			<input class="full-info-option" type="checkbox" id="{{#toCodeFormat this}}{{/toCodeFormat}}_option">
 			<div class="tablo_popup-info" id="{{#toCodeFormat this}}{{/toCodeFormat}}_popup">
+				<p>
+					<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option">X</label>
+				</p>
 				{{id}}
 				/ <i>{{target.code}}</i>: {{target.name}}
 				/ {{time}}
