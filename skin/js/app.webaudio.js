@@ -28,9 +28,24 @@ window.supportedAudioTypes = (function(){
 	return result;
 })();
 
-var APP = (function(app){
+String.prototype.htmlToReplace = {
+	'&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;'
+};
+String.prototype.escapeHtml = function() {
+	return this.replace(/[&<>]/g, function(tag) {
+		return this.htmlToReplace[tag] || tag;
+	}.bind(this));
+};
+
+var APP = (function(app, module){
 	app.init = function(){
 		// values
+		this.module = {
+			el: document.querySelector(module.selector),
+			selector: module.selector
+		};
 		this.media = null;
 		this.player = document.getElementById('player');
 
@@ -51,10 +66,16 @@ var APP = (function(app){
 				return;
 			}
 			input.onchange = function(event){
-				app.media = this.files[0] || null;
+				app.media = event.target.files[0] || null;
 				app.startPlaying();
 			};
-			input.onchange();
+		};
+
+		this.initControls = function(){
+			var c = this.player.controls = this.module.el.querySelector(this.module.selector+'_control');
+			c.onclick = function(){
+				return APP.player.paused ? APP.player.play() : APP.player.pause();
+			};
 		};
 
 		this.startPlaying = function(){
@@ -63,12 +84,15 @@ var APP = (function(app){
 				return;
 			}
 			this.player.src = URL.createObjectURL(this.media);
+			this.module.el.querySelector(this.module.selector+'_title')
+				.innerHTML = this.media.name;
 		};
 
-		// calls 
+		// calls
 		this.initChooseInput();
+		this.initControls();
 
 		return this;
 	};
 	return app.init();
-})(APP || {});
+})(APP || {}, {selector: '.player'});

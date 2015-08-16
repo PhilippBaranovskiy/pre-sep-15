@@ -6,10 +6,19 @@
 	<link rel="stylesheet" type="text/css" href="skin/css/webaudio.css">
 </head>
 <body>
-	<input id="choose-file" type="file" title="choose a file" accept="audio/*">
-	<audio preload controls id="player" src="">
-		Невозможно воспроизвести файл
-	</audio>
+	<div class="player">
+		<div>
+			<input id="choose-file" type="file" title="choose a file" accept="audio/*">
+		</div>
+		<audio preload id="player" class="player_raw-player">
+			Невозможно воспроизвести файл
+		</audio>
+		<p class="player_title"></p>
+		<p>
+			<button class="player_control">play / pause</button>
+		</p>
+	</div>
+
 	<script src="skin/js/app.webaudio.js"></script>
 </body>
 </html>
