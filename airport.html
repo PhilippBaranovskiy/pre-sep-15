@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>airport tablo</title>
+	<link rel="stylesheet" type="text/css" href="skin/css/airport.css">
+</head>
+<body>
+	<div class="tablo">
+		Загрузка…
+	</div>
+
+	<!-- 
+		для вылетающих:
+			регистрация,
+			ожидание посадки,
+			посадка закончена,
+			вылетел;
+
+		для прилетающих:
+			по расписанию,
+			летит,
+			приземлился;
+
+		для всех:
+			задерживается до HH:MM,
+			отменён
+	 -->
+
+	<script type="text/x-handlebars-template" id="tablo-data-template">
+		Показать только:
+		<input id="toggler_arrival" type="checkbox">
+		<label for="toggler_arrival">Прилёт</label>
+		<input id="toggler_departure" type="checkbox">
+		<label for="toggler_departure">Вылет</label>
+
+		{{#each flights}}
+			<input class="full-info-option" type="checkbox" id="{{#toCodeFormat this}}{{/toCodeFormat}}_option">
+			<div class="tablo_popup-info" id="{{#toCodeFormat this}}{{/toCodeFormat}}_popup">
+				{{id}}
+				/ <i>{{target.code}}</i>: {{target.name}}
+				/ {{time}}
+				/ {{status}}
+				/ {{company}}
+				/ {{airplane}}
+			</div>
+			<style>
+				#{{#toCodeFormat this}}{{/toCodeFormat}}_option:checked + #{{#toCodeFormat this}}{{/toCodeFormat}}_popup {
+					display: block;
+				}
+			</style>
+		{{/each}}
+
+		<table class="tablo_holder">
+			<thead class="tablo_header">
+				<tr>
+					<th class="tablo:high-important">Рейс#</th>
+					<th>&nbsp;</th>
+					<th>Назначение</th>
+					<th>Время</th>
+					<th>Статус рейса</th>
+					<th class="tablo:high-important">Перевозчик</th>
+					<th class="tablo:mid-important">Тип самолета</th>
+					<th class="tablo:low-important">Примечание</th>
+				</tr>
+			</thead>
+			<tbody class="tablo_body">
+			{{#each flights}}
+				<tr class="tablo_data tablo_data__{{type}}">
+					<td class="tablo_flight tablo:high-important">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{id}}
+						</span>
+					</td>
+					<td class="tablo_flight">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content tablo_flight_type tablo_flight__{{type}}"></span>
+					</td>
+					<td class="tablo_flight tablo_flight__target">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							<i class="tablo_flight_target-code">{{target.code}}</i>: {{target.name}}
+						</span>
+					</td>
+					<td class="tablo_flight tablo_flight__time">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{time}}
+						</span>
+					</td>
+					<td class="tablo_flight tablo_flight__status">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{status}}
+						</span>
+					</td>
+					<td class="tablo_flight tablo_flight_company {{#toCodeFormat company}}{{/toCodeFormat}} tablo:high-important">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{company}}
+						</span>
+					</td>
+					<td class="tablo_flight tablo_flight_airplane-type tablo:mid-important">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{airplane}}
+						</span>
+					</td>
+					<td class="tablo_flight tablo_flight__note tablo:low-important">
+						<label for="{{#toCodeFormat this}}{{/toCodeFormat}}_option" class="tablo_flight_content">
+							{{#if note}}{{note}}
+							{{else}}&nbsp;{{/if}}
+						</span>
+					</td>
+				</tr>
+			{{/each}}
+			</tbody>
+		</table>
+	</script>
+	<script src="skin/js/vendor/handlebars/handlebars.min.js"></script>
+	<script src="skin/js/app.js"></script>
+</body>
+</html>

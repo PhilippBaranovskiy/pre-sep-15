@@ -1,0 +1,119 @@
+@media (max-width: 40.625em) {
+  .tablo\:high-important {
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
+@media (max-width: 46.875em) {
+  .tablo\:mid-important {
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
+@media (max-width: 56.25em) {
+  .tablo\:low-important {
+    display: none;
+    /*
+    	I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+    */ } }
+#toggler_arrival:checked ~ .tablo_holder .tablo_data__departure {
+  visibility: collapse; }
+
+#toggler_departure:checked ~ .tablo_holder .tablo_data__arrival {
+  visibility: collapse; }
+
+#toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__departure, #toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__arrival {
+  visibility: visible; }
+
+.tablo_popup-info {
+  display: none;
+  position: fixed;
+  background-color: white;
+  border: 1px solid gray;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 4; }
+
+.tablo_holder {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  margin: 10px auto auto; }
+
+.tablo_header th {
+  padding: 0px 15px;
+  text-align: left;
+  border: 1px solid silver;
+  z-index: 3;
+  position: relative; }
+  .tablo_header th:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid silver;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%; }
+
+.tablo_data:nth-of-type(odd) {
+  background-color: #e6e6e6; }
+.tablo_data:hover {
+  background-color: #ffffcd; }
+
+.tablo_flight {
+  position: relative;
+  border: 1px solid silver; }
+  .tablo_flight:hover:after {
+    background-color: #ffffcd;
+    visibility: visible;
+    width: 100%;
+    height: 5000px;
+    top: -2500px;
+    left: 0;
+    z-index: 1;
+    display: block;
+    content: '';
+    position: absolute; }
+  .tablo_flight:before {
+    content: '';
+    display: block;
+    border-bottom: 1px solid silver;
+    position: absolute;
+    bottom: -1px;
+    z-index: 2;
+    left: 0;
+    width: 100%; }
+
+.tablo_flight_content {
+  display: block;
+  padding: 0px 15px;
+  position: relative;
+  z-index: 2; }
+
+.tablo_flight_target-code {
+  min-width: 2.8125rem;
+  font-style: normal;
+  font-weight: bolder;
+  display: inline-block; }
+
+/*
+	flight type icons
+*/
+.tablo_flight_type {
+  padding: 0;
+  text-align: center; }
+  .tablo_flight_type:before {
+    content: '';
+    display: inline-block;
+    background-image: url(../img/icon-pack.png);
+    background-size: auto 100%;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle; }
+
+.tablo_flight__arrival:before {
+  background-position: 0px 0px; }
+
+.tablo_flight__departure:before {
+  background-position: -25px 0px; }

@@ -1,0 +1,156 @@
+$mN: 'tablo'; // moduleName
+$headPadding: 0px 15px;
+$bodyPadding: $headPadding;
+$border: 1px solid silver;
+$hlColor: rgb(255,255,205);
+
+// ranges
+$r_important: (
+	high-important: 40.625em, // 650 px
+	mid-important: 46.875em, // 750 px
+	low-important: 56.25em   // 900 px
+);
+
+@each $state, $width in $r_important {
+	@media (max-width: #{$width}) {
+		.#{$mN}\:#{$state} {
+			display: none;
+			/*
+				I could use visibility: collapse; but this pattern doesn't work in this case. So it's more cross-browser method;
+			*/
+		}
+	}
+}
+
+// filtering
+
+#toggler_arrival:checked ~ .#{$mN}_holder .#{$mN}_data__departure {
+	visibility: collapse;
+}
+#toggler_departure:checked ~ .#{$mN}_holder .#{$mN}_data__arrival {
+	visibility: collapse;
+}
+#toggler_arrival:checked ~ #toggler_departure:checked ~ .#{$mN}_holder {
+	& .#{$mN}_data__departure,
+	& .#{$mN}_data__arrival {
+		visibility: visible;
+	}
+}
+
+// popup by click
+
+.#{$mN}_popup-info {
+	display: none;
+	position: fixed;
+	
+	background-color: white;
+	border: 1px solid gray;
+	
+	top: 0;
+	bottom: 0;
+	right: 0;
+	
+	z-index: 4;
+}
+
+// module styles
+
+.#{$mN}_holder {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	margin: 10px auto auto;
+}
+.#{$mN}_header {
+	th {
+		padding: $headPadding;
+		text-align: left;
+		border: $border;
+		z-index: 3;
+		position: relative;
+
+		&:after {
+			content: '';
+			display: block;
+			border-bottom: $border;
+			position: absolute;
+			bottom: -1px;
+			left: 0;
+			width: 100%;
+		}
+	}
+}
+.#{$mN}_body {}
+.#{$mN}_data {
+	&:nth-of-type(odd) {
+		background-color: #e6e6e6;
+	}
+	&:hover {
+		background-color: $hlColor;
+	}
+}
+.#{$mN}_flight {
+	position: relative;
+	border: $border;
+	&:hover {
+		&:after {
+			background-color: $hlColor;
+
+			visibility: visible;
+			width: 100%;
+			height: 5000px;
+			top: -2500px; left: 0;
+			
+			z-index: 1;
+			display: block;
+			content: '';
+			position: absolute;
+		}
+	}
+	&:before {
+		content: '';
+		display: block;
+		border-bottom: $border;
+		position: absolute;
+		bottom: -1px;
+		z-index: 2;
+		left: 0;
+		width: 100%;
+	}
+}
+.#{$mN}_flight_content {
+	display: block;
+	padding: $bodyPadding;
+	position: relative;
+	z-index: 2;
+}
+.#{$mN}_flight_target-code {
+	min-width: 2.8125rem;
+	font-style: normal;
+	font-weight: bolder;
+	display: inline-block;
+}
+
+/*
+	flight type icons
+*/
+.#{$mN}_flight_type {
+	padding: 0;
+	text-align: center;
+	
+	&:before {
+		content: '';
+		display: inline-block;
+		background-image: url(../img/icon-pack.png);
+		background-size: auto 100%;
+		width: 25px;
+		height: 25px;
+		vertical-align: middle;
+	}
+}
+.#{$mN}_flight__arrival:before {
+	background-position: 0px 0px;
+}
+.#{$mN}_flight__departure:before {
+	background-position: -25px 0px;
+}
