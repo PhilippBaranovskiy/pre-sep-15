@@ -25,6 +25,9 @@
 #toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__departure, #toggler_arrival:checked ~ #toggler_departure:checked ~ .tablo_holder .tablo_data__arrival {
   visibility: visible; }
 
+.full-info-option {
+  display: none; }
+
 .tablo_popup-info {
   display: none;
   position: fixed;
